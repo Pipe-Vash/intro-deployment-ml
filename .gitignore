@@ -1,5 +1,8 @@
 venv/
 .ipynb_checkpoints/
 *.json
+*.txt
 *.csv
 *.pkl
+*.png
+__pycache__/
