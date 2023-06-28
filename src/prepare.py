@@ -5,7 +5,7 @@ import sys
 import logging
 import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/pipe-vash/Personal_Projects/intro-deployment-ml/mlops-fundamentals-390620-9d6bc1957416.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./mlops-fundamentals-390620-9d6bc1957416.json"
 
 
 logging.basicConfig(
