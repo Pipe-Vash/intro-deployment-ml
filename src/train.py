@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split, cross_validate, GridSearch
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.preprocessing import PowerTransformer
+from sklearn.preprocessing import PowerTransformer, StandardScaler
 
 import logging
 import sys
@@ -27,7 +27,8 @@ data = pd.read_csv('dataset/full_data.csv')
 
 # mejoras 1.0
 data_scaled = data.copy()
-scaler = PowerTransformer(method='box-cox')
+#scaler = PowerTransformer(method='box-cox')
+scaler = StandardScaler()
 data_scaled = scaler.fit_transform(data_scaled)
 data_scaled = pd.DataFrame(data_scaled, columns = data.columns)
 
