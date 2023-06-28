@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Creating and activating virtualenv
         run: |
+          sudo apt-get install python3.8-distutils
           pip install virtualenv
           virtualenv --python=python3.8 venv
           source venv/bin/activate
