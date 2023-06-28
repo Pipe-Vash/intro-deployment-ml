@@ -3,29 +3,27 @@ import pandas as pd
 from io import StringIO
 import sys
 import logging
-import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./mlops-fundamentals-390620-9d6bc1957416.json"
-
+from pandas.core.tools import numeric
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)s:%(name)s: %(message)s',
-    level= logging.INFO,
+    level=logging.INFO,
     datefmt='%H:%M:%S',
-    stream= sys.stderr
+    stream=sys.stderr
 )
 
 logger = logging.getLogger(__name__)
 
-logging.info('Fetching data..')
+logging.info('Fetching data...')
 
-movie_data_path =api.get_url('dataset/movies.csv', remote='dataset-track')
-finantial_data_path = api.get_url("dataset/finantials.csv", remote="dataset-track")
-opening_data_path =api.get_url('dataset/opening_gross.csv', remote='dataset-track')
+movie_data_path = api.read('dataset/movies.csv', remote='dataset-track')
+finantial_data_path = api.read('dataset/finantials.csv', remote='dataset-track')
+opening_data_path = api.read('dataset/opening_gross.csv', remote='dataset-track')
 
-fin_data =pd.read_csv(finantial_data_path)
-movie_data =pd.read_csv(movie_data_path)
-opening_data =pd.read_csv(opening_data_path)
+fin_data = pd.read_csv(StringIO(finantial_data_path))
+movie_data = pd.read_csv(StringIO(movie_data_path))
+opening_data = pd.read_csv(StringIO(opening_data_path))
 
 numeric_columns_mask = (movie_data.dtypes == float) | (movie_data.dtypes == int)
 numeric_columns = [column for column in numeric_columns_mask.index if numeric_columns_mask[column]]
