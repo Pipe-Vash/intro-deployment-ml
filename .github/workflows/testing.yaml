@@ -8,11 +8,14 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
       - name: Creating and activating virtualenv
         run: |
-          sudo apt-get install python3.8
           pip install virtualenv
-          virtualenv --python=python3.8 venv
+          virtualenv venv
           source venv/bin/activate
       - name: Install dependencies
         run: |
