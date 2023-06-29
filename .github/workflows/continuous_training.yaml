@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: 3.8
       - name: ssh key passphrase
-        uses: appleboy/ssh-action@v0.1.9
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
