@@ -23,6 +23,7 @@ jobs:
           python-version: 3.8
 
       - name: Train model
+        uses: iterative/setup-dvc@v1
         env:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         run: |
@@ -53,4 +54,5 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cat report.txt >> report.md
+          echo '![](./prediction_behavior.png "Prediction Behavior")' >> report.md
           cml comment create report.md
