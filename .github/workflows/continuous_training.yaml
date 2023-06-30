@@ -17,7 +17,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - uses: iterative/setup-dvc@v1
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -54,5 +53,4 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cat report.txt >> report.md
-          echo '![](./prediction_behavior.png "Prediction Behavior")' >> report.md
-          cml comment create report.md --publish=true
+          cml comment create report.md
